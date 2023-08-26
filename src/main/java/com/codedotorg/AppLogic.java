@@ -23,8 +23,22 @@ public class AppLogic {
      * @return the user PIN as a string
      */
     public String createUserPin(String predictedClass) {
-        
-        return "";
+        if (predictedClass.equals("1")) {
+            user += "1";
+        }
+        if (predictedClass.equals("2")) {
+            user += "2";
+        }
+        if (predictedClass.equals("3")) {
+            user += "3";
+        }
+        if (predictedClass.equals("4")) {
+            user += "4";
+        }
+        if (predictedClass.equals("0")) {
+            user += "0";
+        }
+        return user;
     }
 
     /**
@@ -32,7 +46,9 @@ public class AppLogic {
      * @return true if the length of the user's PIN is equal to 4, false otherwise.
      */
     public boolean checkPinLength() {
-        
+        if (user.length() == 4) {
+            return true;
+        }
         return false;
     }
 
@@ -42,8 +58,10 @@ public class AppLogic {
      * @return a string indicating whether the PIN is correct or not
      */
     public String getPinStatus(String userPin) {
-        
-        return "";
+        if (userPin.equals(pin)) {
+            return "Correct";
+        }
+        return "Incorrect";
     }
     
     /**
@@ -58,10 +76,20 @@ public class AppLogic {
     /**
      * Generates a random 4-digit PIN number.
      * @return the generated PIN number as a string.
+     * 
+     * 
+     * NOTE: PIN IS ONLY COMPOSED OF DIGITS 0-4!!!
+     * 
+     * 
      */
     private String createRandomPin() {
-        
-        return "";
+        int temp;
+        String newPin = "";
+        for (int i = 0; i < 4; i++) {
+            temp = (int) (Math.random() * 5);
+            newPin = newPin + temp;
+        }
+        return newPin;
     }
 
 }
